@@ -16,6 +16,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -25,7 +26,8 @@ public class AppModule {
     @Singleton
     @Provides
     static Retrofit provideRetrofit(){
-        return new Retrofit.Builder().baseUrl(ApiClass.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        return new Retrofit.Builder().baseUrl(ApiClass.BASE_URL).addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()).build();
     }
 
 

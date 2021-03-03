@@ -70,4 +70,12 @@ dependencies {
     // Rx Java & Rx Android
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    // Retrofit call adapter
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+
+    // Reactive Streams (convert Observable to LiveData)
+    def reactivestreams_version = "1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 }

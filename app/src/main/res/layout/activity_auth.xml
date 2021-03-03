@@ -35,6 +35,14 @@
 
     </Button>
 
+    <ProgressBar
+        android:id="@+id/progressId"
+        android:layout_marginTop="200dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+
+    </ProgressBar>
+
 
 
 </LinearLayout>
