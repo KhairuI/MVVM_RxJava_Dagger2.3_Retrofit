@@ -3,45 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="15dp"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:layout_height="match_parent"
     tools:context=".ui.auth.AuthActivity">
 
-    <ImageView
-        android:layout_marginTop="15dp"
-        android:id="@+id/logoImageId"
-        android:layout_width="150dp"
-        android:layout_height="150dp">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/authToolbarId"
+        android:background="#3A4FC5"
+        android:elevation="4dp"
+        android:layout_height="?attr/actionBarSize">
 
-    </ImageView>
+    </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/editTextId"
-        android:hint="Enter user id"
-        android:layout_marginTop="10dp"
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </EditText>
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:id="@+id/logoImageId"
+            android:layout_width="150dp"
+            android:layout_height="150dp">
 
-    <Button
-        android:text="Login"
-        android:id="@+id/loginButtonId"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        </ImageView>
 
-    </Button>
+        <EditText
+            android:id="@+id/editTextId"
+            android:hint="Enter user id"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ProgressBar
-        android:id="@+id/progressId"
-        android:layout_marginTop="200dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp">
+        </EditText>
 
-    </ProgressBar>
+        <Button
+            android:text="Login"
+            android:id="@+id/loginButtonId"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+        <ProgressBar
+            android:id="@+id/progressId"
+            android:layout_marginTop="200dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+
+        </ProgressBar>
+
+
+
+    </LinearLayout>
+
+
 
 
 

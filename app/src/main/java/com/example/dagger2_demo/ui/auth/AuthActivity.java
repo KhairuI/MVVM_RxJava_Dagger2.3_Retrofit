@@ -1,9 +1,11 @@
 package com.example.dagger2_demo.ui.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +22,7 @@ import com.bumptech.glide.RequestManager;
 import com.example.dagger2_demo.R;
 import com.example.dagger2_demo.di.auth.AuthResource;
 import com.example.dagger2_demo.model.User;
+import com.example.dagger2_demo.ui.main.MainActivity;
 import com.example.dagger2_demo.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -33,6 +36,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
     private EditText editText;
     private Button button;
     private ProgressBar progressBar;
+    private Toolbar toolbar;
 
     @Inject
     ViewModelProviderFactory providerFactory;
@@ -49,9 +53,13 @@ public class AuthActivity extends DaggerAppCompatActivity {
         setContentView(R.layout.activity_auth);
         initViewModel();
         setLogo();
+        toolbar= findViewById(R.id.authToolbarId);
+        setSupportActionBar(toolbar);
+        setTitle("Authentication");
         editText= findViewById(R.id.editTextId);
         button= findViewById(R.id.loginButtonId);
         progressBar= findViewById(R.id.progressId);
+        progressBar.setVisibility(View.INVISIBLE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +72,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
 
     private void subscribeObserver() {
 
-        authViewModel.observeUser().observe(this, new Observer<AuthResource<User>>() {
+        authViewModel.observeAuthState().observe(this, new Observer<AuthResource<User>>() {
             @Override
             public void onChanged(AuthResource<User> userAuthResource) {
                 if(userAuthResource != null){
@@ -76,6 +84,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
                         case AUTHENTICATED:
                             showProgressBar(false);
                             Log.d(TAG,"Login Success: "+userAuthResource.data.getEmail());
+                            loginSuccess();
                             break;
 
                         case ERROR:
@@ -90,6 +99,12 @@ public class AuthActivity extends DaggerAppCompatActivity {
                 }
             }
         });
+    }
+
+    private void loginSuccess(){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showProgressBar(boolean isVisible){

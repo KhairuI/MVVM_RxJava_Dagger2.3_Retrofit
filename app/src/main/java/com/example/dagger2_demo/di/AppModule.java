@@ -20,7 +20,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
-public class AppModule {
+public class  AppModule {
 
     // for retrofit...
     @Singleton
@@ -29,7 +29,6 @@ public class AppModule {
         return new Retrofit.Builder().baseUrl(ApiClass.BASE_URL).addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()).build();
     }
-
 
     @Singleton
     @Provides

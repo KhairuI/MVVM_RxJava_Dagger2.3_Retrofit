@@ -15,8 +15,7 @@ import javax.inject.Singleton;
 @Singleton
 public class SessionManager {
     private static final String TAG = "SessionManager";
-
-    private MediatorLiveData<AuthResource<User>> catchUser= new MediatorLiveData<>();
+    public MediatorLiveData<AuthResource<User>> catchUser= new MediatorLiveData<>();
 
     @Inject
     public SessionManager() {
@@ -33,10 +32,9 @@ public class SessionManager {
                 }
             });
         }
-
     }
 
-    private void logout(){
+    public void logout(){
         Log.d(TAG,"Logging out.....");
         catchUser.setValue(AuthResource.<User>logout());
     }
